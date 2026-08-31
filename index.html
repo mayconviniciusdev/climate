@@ -1,13 +1,172 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Climate</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
   </head>
-  <body>
-    <div id="app"></div>
+
+  <body id="app">
+    <div class="page-shell">
+      <header>
+        <div>
+          <p>Weather dashboard</p>
+          <h1>Climate</h1>
+        </div>
+      </header>
+
+      <section class="search-panel">
+        <form id="search-form" novalidate>
+          <input
+          id="city-input"
+          name="city"
+          type="text"
+          placeholder="Digite o nome da cidade"
+          autocomplete="off"/>
+
+          <button id="search-button" type="submit">Buscar</button>
+        </form>
+      </section>
+
+      <main id="weather-card" aria-live="polite">
+        <section id="empty-state" class="is-visible">
+          <p class="empty-message">Pesquise uma cidade para ver o clima</p>
+        </section>
+
+        <section id="loading-state" aria-busy="true" hidden>
+          <div class="loading-indicator" aria-label="Carregando clima">
+            <span class="spinner" aria-hidden="true"></span>
+            <span>Carregando...</span>
+          </div>
+        </section>
+
+        <article id="weather-result" hidden>
+          <div class="weather-layout">
+            <aside id="weather-sidebar">
+              <div>
+                <p id="weather-city"></p>
+                <p id="weather-description"></p>
+              </div>
+
+              <span id="weather-temperature"></span>
+            </aside>
+
+            <section class="weather-details">
+              <div id="weather-date"></div>
+              
+              <div class="detail-grid">
+                <div class="detail-item">
+                  <span class="label">Umidade</span>
+                  <strong id="humidity-value"></strong>
+                </div>
+
+                <div class="detail-item">
+                  <span class="label">Sensação térmica</span>
+                  <strong id="feels-like-value"></strong>
+                </div>
+
+                <div class="detail-item">
+                  <span class="label">Precipitação</span>
+                  <strong id="precipitation-value"></strong>
+                </div>
+
+                <div class="detail-item">
+                  <span class="label">Vento</span>
+                  <strong id="wind-value"></strong>
+                </div>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <section id="weekly-forecast" hidden>
+          <div class="weekly-header">
+            <h2>Próximos 7 dias</h2>
+          </div>
+
+          <div class="forecast-list" id="forecast-list">
+            <div class="forecast-card">
+              <div class="forecast-day">Seg</div>
+              <div class="forecast-icon">☀️</div>
+              <div class="forecast-description">Ensolarado</div>
+              <div class="forecast-temps">
+                <span class="forecast-max">--°</span>
+                <span class="forecast-min">--°</span>
+              </div>
+              <div class="forecast-rain">--% chuva</div>
+            </div>
+
+            <div class="forecast-card">
+              <div class="forecast-day">Ter</div>
+              <div class="forecast-icon">☀️</div>
+              <div class="forecast-description">Ensolarado</div>
+              <div class="forecast-temps">
+                <span class="forecast-max">--°</span>
+                <span class="forecast-min">--°</span>
+              </div>
+              <div class="forecast-rain">--% chuva</div>
+            </div>
+
+            <div class="forecast-card">
+              <div class="forecast-day">Qua</div>
+              <div class="forecast-icon">☀️</div>
+              <div class="forecast-description">Ensolarado</div>
+              <div class="forecast-temps">
+                <span class="forecast-max">--°</span>
+                <span class="forecast-min">--°</span>
+              </div>
+              <div class="forecast-rain">--% chuva</div>
+            </div>
+
+            <div class="forecast-card">
+              <div class="forecast-day">Qui</div>
+              <div class="forecast-icon">☀️</div>
+              <div class="forecast-description">Ensolarado</div>
+              <div class="forecast-temps">
+                <span class="forecast-max">--°</span>
+                <span class="forecast-min">--°</span>
+              </div>
+              <div class="forecast-rain">--% chuva</div>
+            </div>
+
+            <div class="forecast-card">
+              <div class="forecast-day">Sex</div>
+              <div class="forecast-icon">☀️</div>
+              <div class="forecast-description">Ensolarado</div>
+              <div class="forecast-temps">
+                <span class="forecast-max">--°</span>
+                <span class="forecast-min">--°</span>
+              </div>
+              <div class="forecast-rain">--% chuva</div>
+            </div>
+
+            <div class="forecast-card">
+              <div class="forecast-day">Sáb</div>
+              <div class="forecast-icon">☀️</div>
+              <div class="forecast-description">Ensolarado</div>
+              <div class="forecast-temps">
+                <span class="forecast-max">--°</span>
+                <span class="forecast-min">--°</span>
+              </div>
+              <div class="forecast-rain">--% chuva</div>
+            </div>
+
+            <div class="forecast-card">
+              <div class="forecast-day">Dom</div>
+              <div class="forecast-icon">☀️</div>
+              <div class="forecast-description">Ensolarado</div>
+              <div class="forecast-temps">
+                <span class="forecast-max">--°</span>
+                <span class="forecast-min">--°</span>
+              </div>
+              <div class="forecast-rain">--% chuva</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
